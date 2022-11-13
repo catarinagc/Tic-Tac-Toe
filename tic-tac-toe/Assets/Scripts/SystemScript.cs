@@ -10,6 +10,7 @@ public class SystemScript : MonoBehaviour
     public GameObject menuScreen;
     public GameObject gameScreen;
     public GameObject endScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class SystemScript : MonoBehaviour
     public void updatePoints(int player, GameObject button){
         gameScreen.GetComponent<GameScore>().updateGame(player, button);
     }
+
     public void finnishGame(int winner){
         string winnerName = null;
         if(winner==1){
@@ -47,4 +49,7 @@ public class SystemScript : MonoBehaviour
         endScreen.GetComponent<EndScreenScript>().displayWinner(winnerName);
     }
     
+    public bool isComputerPlaying(){
+        return amountOfPlayers==1;
+    }
 }

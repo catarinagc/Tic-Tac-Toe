@@ -9,9 +9,9 @@ public class GridButton : MonoBehaviour
     public GameObject gameScreen;
     public Button button;
     public Text buttonText;
-
     public int coluna;
     public int linha;
+
     public void onClick(){
         int player =0;
         if(gameScreen.GetComponent<StartGame>().isPlayer1Turn()){
