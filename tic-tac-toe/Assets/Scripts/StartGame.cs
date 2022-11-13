@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    private bool player1turn;
+    private bool player1Turn;
     public Text player1Text;
     public Text player2Text;
     public GameObject system;
@@ -19,20 +19,23 @@ public class StartGame : MonoBehaviour
         Debug.Log(computerPlaying);
         gridButtons = GameObject.FindGameObjectsWithTag("GridButton");
         int playerTurn = Random.Range(1,3);
-        player1turn= (playerTurn==1);
+        player1Turn= (playerTurn==1);
         player1Text.text = "Player1: "+ system.GetComponent<SystemScript>().player1Name +" X";
         player2Text.text = "Player2: "+ system.GetComponent<SystemScript>().player2Name +" O";
+        if(!player1Turn && computerPlaying){
+            computerPlay();
+        }
     }
 
     public void advance(){
-        player1turn=!player1turn;
-        if(computerPlaying && !player1turn){
+        player1Turn=!player1Turn;
+        if(computerPlaying && !player1Turn){
             computerPlay();
         }
     }
 
     public bool isPlayer1Turn(){
-        return player1turn;
+        return player1Turn;
     }
 
     public void finnishGame(int player){

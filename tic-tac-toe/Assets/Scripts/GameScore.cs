@@ -54,7 +54,7 @@ public class GameScore : MonoBehaviour
                 gameOver=true;
             }
 
-            if(gameBoard[2,2] ==player && gameBoard[0,2]== gameBoard[1,1] && gameBoard[1,1]==gameBoard[2,0]){
+            if(gameBoard[0,2] ==player && gameBoard[0,2]== gameBoard[1,1] && gameBoard[1,1]==gameBoard[2,0]){
                 gameOver=true;
             }
             if(!gameOver){

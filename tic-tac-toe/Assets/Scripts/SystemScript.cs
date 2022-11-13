@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SystemScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SystemScript : MonoBehaviour
     public GameObject menuScreen;
     public GameObject gameScreen;
     public GameObject endScreen;
+    public InputField player2NameInputBox;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +27,12 @@ public class SystemScript : MonoBehaviour
 
     public void getPlayer2Name(string name){
         player2Name=name;
-        amountOfPlayers=2;
     }
 
     public void startGame(){
+        if(player2NameInputBox.interactable==true){
+            amountOfPlayers=2;
+        }
         gameScreen.SetActive(true);
         menuScreen.SetActive(false);
     }

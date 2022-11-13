@@ -879,6 +879,7 @@ MonoBehaviour:
   menuScreen: {fileID: 1972227381}
   gameScreen: {fileID: 1044740955}
   endScreen: {fileID: 1399979152}
+  player2NameInputBox: {fileID: 385080897}
 --- !u!4 &754045429
 Transform:
   m_ObjectHideFlags: 0
