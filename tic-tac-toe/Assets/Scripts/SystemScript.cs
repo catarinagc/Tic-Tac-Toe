@@ -30,7 +30,7 @@ public class SystemScript : MonoBehaviour
     }
 
     public void startGame(){
-        if(player2NameInputBox.interactable==true){
+        if(player2NameInputBox.gameObject.activeSelf==true){
             amountOfPlayers=2;
         }
         gameScreen.SetActive(true);
