@@ -45,18 +45,24 @@ public class StartGame : MonoBehaviour
     private void computerPlay(){
         int choose =0;
         GameObject button;
+        GameObject[] freeGrids = new GameObject[9];
+        int currentSize=0;
         for(int i=0; i<9;i++){
             button= gridButtons[i];
             if(button.GetComponent<Button>().interactable == true){
-                if(i==8){
-                    button.GetComponent<GridButton>().onClick();
+                freeGrids[currentSize] =button;
+                currentSize++;
+            }
+        }
+        for(int j=0; j<currentSize;j++){
+            if(j==currentSize){
+                freeGrids[j].GetComponent<GridButton>().onClick();
+                break;
+            }else{
+                choose= Random.Range(0,2);
+                if(choose==1){
+                    freeGrids[j].GetComponent<GridButton>().onClick();
                     break;
-                }else{
-                    choose= Random.Range(0,2);
-                    if(choose==1){
-                        button.GetComponent<GridButton>().onClick();
-                        break;
-                    }
                 }
             }
         }

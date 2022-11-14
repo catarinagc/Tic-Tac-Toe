@@ -38,11 +38,10 @@ public class GameScore : MonoBehaviour
         while(!gameOver){
             for(int i=0; i<3; i++){
                 if(gameBoard[i,0] == player && gameBoard[i,0] == gameBoard[i,1] && gameBoard[i,1] == gameBoard[i,2]){
-                        gameOver=true;
-                        break;
+                    gameOver=true;
+                    break;
                 }
             }
-
             for(int j=0; j<3; j++){
                 if(gameBoard[0,j] == player && gameBoard[0,j] == gameBoard[1,j] && gameBoard[1,j] == gameBoard[2,j]){
                     gameOver=true;
@@ -57,9 +56,7 @@ public class GameScore : MonoBehaviour
             if(gameBoard[0,2] ==player && gameBoard[0,2]== gameBoard[1,1] && gameBoard[1,1]==gameBoard[2,0]){
                 gameOver=true;
             }
-            if(!gameOver){
-                break;
-            }
+            break;
         }
         if(gameOver){
             winner = player;
@@ -69,5 +66,9 @@ public class GameScore : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public bool isGameOver(){
+        return gameOver;
     }
 }

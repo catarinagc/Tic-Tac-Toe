@@ -21,9 +21,11 @@ public class GridButton : MonoBehaviour
             buttonText.text = "O";
             player =2;
         }
-        gameScreen.GetComponent<StartGame>().advance();
         button.interactable = false;
         system.GetComponent<SystemScript>().updatePoints(player, this.gameObject);
+        if(!gameScreen.GetComponent<GameScore>().isGameOver()){
+            gameScreen.GetComponent<StartGame>().advance();
+        }
     }
         
-    }
+}
