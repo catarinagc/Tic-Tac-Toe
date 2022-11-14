@@ -16,10 +16,10 @@ public class StartGame : MonoBehaviour
     void Start()
     {
         computerPlaying = system.GetComponent<SystemScript>().isComputerPlaying();
-        Debug.Log(computerPlaying);
         gridButtons = GameObject.FindGameObjectsWithTag("GridButton");
         int playerTurn = Random.Range(1,3);
         player1Turn= (playerTurn==1);
+        changeNameColors();
         player1Text.text = "Player1: "+ system.GetComponent<SystemScript>().player1Name +" X";
         player2Text.text = "Player2: "+ system.GetComponent<SystemScript>().player2Name +" O";
         if(!player1Turn && computerPlaying){
@@ -29,6 +29,7 @@ public class StartGame : MonoBehaviour
 
     public void advance(){
         player1Turn=!player1Turn;
+        changeNameColors();
         if(computerPlaying && !player1Turn){
             computerPlay();
         }
@@ -65,6 +66,16 @@ public class StartGame : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+
+    private void changeNameColors(){
+        if(player1Turn){
+            player1Text.color = Color.blue;
+            player2Text.color = Color.white;
+        }else{
+            player2Text.color = Color.blue;
+            player1Text.color = Color.white;
         }
     }
 }
