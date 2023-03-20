@@ -11,12 +11,14 @@ public class StartGame : MonoBehaviour
     public GameObject system;
     private bool computerPlaying;
     private GameObject[] gridButtons;
+    private bool isEasyMode;
 
     // Start is called before the first frame update
     void Start()
     {
         computerPlaying = system.GetComponent<SystemScript>().isComputerPlaying();
         gridButtons = GameObject.FindGameObjectsWithTag("GridButton");
+        isEasyMode = system.GetComponent<SystemScript>().isInEasyMode();
         int playerTurn = Random.Range(1,3);
         player1Turn= (playerTurn==1);
         changeNameColors();
@@ -44,7 +46,6 @@ public class StartGame : MonoBehaviour
     }
 
     private void computerPlay(){
-        int choose =0;
         GameObject button;
         GameObject[] freeGrids = new GameObject[9];
         int currentSize=0;
@@ -55,18 +56,35 @@ public class StartGame : MonoBehaviour
                 currentSize++;
             }
         }
-        for(int j=0; j<currentSize;j++){
-            if(j==currentSize){
+        
+        if(isEasyMode){
+            stupidPlay(freeGrids, currentSize);
+        }else{
+            notSoStupidPlay();
+        }
+    }
+
+    private void stupidPlay(GameObject[] freeGrids, int amount){
+        int choose =0;
+        for(int j=0; j<amount;j++){
+            if(freeGrids[j] == null){
+                break;
+            }
+            if(j==amount-1 ){
                 freeGrids[j].GetComponent<GridButton>().onClick();
                 break;
             }else{
-                choose= Random.Range(0,2);
-                if(choose==1){
+                choose= Random.Range(0,1);
+                if(choose==0){
                     freeGrids[j].GetComponent<GridButton>().onClick();
                     break;
                 }
             }
         }
+    }
+
+    private void notSoStupidPlay(){
+
     }
 
     private void changeNameColors(){

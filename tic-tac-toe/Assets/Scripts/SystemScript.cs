@@ -12,6 +12,7 @@ public class SystemScript : MonoBehaviour
     public GameObject gameScreen;
     public GameObject endScreen;
     public InputField player2NameInputBox;
+    private bool isEasyMode;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +20,14 @@ public class SystemScript : MonoBehaviour
         amountOfPlayers=1;
         player1Name="player1";
         player2Name="player2";
+        isEasyMode=false;
     }
 
-    public void getPlayer1Name(string name){
+    public void setPlayer1Name(string name){
         player1Name=name;
     }
 
-    public void getPlayer2Name(string name){
+    public void setPlayer2Name(string name){
         player2Name=name;
     }
 
@@ -52,8 +54,16 @@ public class SystemScript : MonoBehaviour
         endScreen.SetActive(true);
         endScreen.GetComponent<EndScreenScript>().displayWinner(winnerName);
     }
-    
+
     public bool isComputerPlaying(){
         return amountOfPlayers==1;
+    }
+
+    public void playInEasyMode(){
+        isEasyMode= !isEasyMode;
+    }
+
+    public bool isInEasyMode(){
+        return isEasyMode;
     }
 }

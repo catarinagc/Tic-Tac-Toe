@@ -27,5 +27,5 @@ public class GridButton : MonoBehaviour
             gameScreen.GetComponent<StartGame>().advance();
         }
     }
-        
+       
 }
